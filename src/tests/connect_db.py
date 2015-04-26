@@ -1,3 +1,5 @@
+#Simple demonstration of inserting a utf-8 string into
+#mysql table
 import mysql.connector
 # -*- coding: utf-8 -*-
 

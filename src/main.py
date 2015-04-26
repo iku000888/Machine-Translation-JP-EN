@@ -1,11 +1,12 @@
 import sys
-
+import machine_translation as mt
 #print sys.argv[0]
 
 #print sys.argv[1]
 
 if "learn-word"==sys.argv[1]:
-   print "stub: learn-word(a,b)"
+   mt.insert_word_pair(sys.argv[2],sys.argv[3])
+   print 
 elif "learn-sentence"==sys.argv[1]:
    print "stub: learn-sentence(a,b)"
 elif "translate-word"==sys.argv[1]:

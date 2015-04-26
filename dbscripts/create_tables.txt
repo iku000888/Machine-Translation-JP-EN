@@ -1,0 +1,8 @@
+DROP DATABASE IF EXISTS EN_JAP;
+CREATE  DATABASE EN_JAP;
+use EN_JAP
+create table word_mp(
+   english_word VARCHAR(20),
+   japanese_word VARCHAR(20),
+   primary key(english_word,japanese_word)
+)

@@ -1,0 +1,3 @@
+use EN_JAP;
+insert into word_mp values('hello','こんにちは');
+select * from word_mp;

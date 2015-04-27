@@ -17,6 +17,5 @@ Comments, feedbacks and pointers are always welcome.
 - Train translate -> Attempt translation, receive human feedback, and learn something from it.
 
 ## Random streams of consciousness
--Maybe things would work better if there is a "fragment" entities between sentences and words.
--English grammer forces words to be separated by spaces. Japanese does not.
- Trim spaces from EN, or add spaces between JP words?
+- Maybe things would work better if there is a "fragment" entities between sentences and words.
+- English grammer forces words to be separated by spaces. Japanese does not. Trim spaces from EN, or add spaces between JP words?

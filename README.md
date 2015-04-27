@@ -1,5 +1,6 @@
 # Machine-Translation-JP-EN
 Attempt implementing the concept of "tranlsation by analogy".
+Comments, feedbacks and pointers are always welcome.
 
 ## Design Goals:
 - No awareness of grammer
@@ -14,3 +15,8 @@ Attempt implementing the concept of "tranlsation by analogy".
 - Edit JP-EN mapping to manually filter incorrect knowledge.
 - Translate sentence
 - Train translate -> Attempt translation, receive human feedback, and learn something from it.
+
+## Random streams of consciousness
+-Maybe things would work better if there is a "fragment" entities between sentences and words.
+-English grammer forces words to be separated by spaces. Japanese does not.
+ Trim spaces from EN, or add spaces between JP words?

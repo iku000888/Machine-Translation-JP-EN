@@ -6,7 +6,7 @@ import machine_translation as mt
 
 if "learn-word"==sys.argv[1]:
    mt.insert_word_pair(sys.argv[2],sys.argv[3])
-   print 
+   #print 
 elif "learn-sentence"==sys.argv[1]:
    print "stub: learn-sentence(a,b)"
 elif "translate-word"==sys.argv[1]:
@@ -18,7 +18,8 @@ elif "import-words"==sys.argv[1]:
 elif "import-sentences"==sys.argv[1]:
    print "stub: import-sentence(a,b)"
 elif "export-words"==sys.argv[1]:
-   print "stub: export-words(a,b)"
+   mt.export_word_pairs(sys.argv[2])
+   #print "stub: export-words(a,b)"
 elif "export-sentences"==sys.argv[1]:
    print "stub: export-sentences(a,b)"
 else : 

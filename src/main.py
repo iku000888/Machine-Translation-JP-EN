@@ -14,7 +14,8 @@ elif "translate-word"==sys.argv[1]:
 elif "translate-sentence"==sys.argv[1]:
    print "stub: translate-sentence"
 elif "import-words"==sys.argv[1]:
-   print "stub: import-words(a,b)"
+   mt.import_word_pairs(sys.argv[2])
+   #print "stub: import-words(a,b)"
 elif "import-sentences"==sys.argv[1]:
    print "stub: import-sentence(a,b)"
 elif "export-words"==sys.argv[1]:

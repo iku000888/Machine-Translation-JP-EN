@@ -39,3 +39,32 @@ def export_word_pairs(outfile):
    cnx.close()
    return
 
+def import_word_pairs(infile):
+   #print outfile
+   cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
+                                 password=os.environ["MYSQLPW"],
+                                 host=os.environ["MYSQLIP"],
+                                 database='EN_JAP')
+   cursor = cnx.cursor()
+   pairs = open(infile,"r")
+   for line in pairs.readlines():
+      pair = line.split(",").rstrip("\n")
+      en_word = pair[0]
+      jp_word = pair[1]
+      add_word = ("INSERT INTO word_mp "
+                  "(english_word, japanese_word) "
+                  "VALUES (%s, %s)")
+      data_word = (en_word,jp_word)   
+      cursor.execute(add_word,data_word)
+   pairs.close()
+   #get_words = ("select * from word_mp;")
+   #cursor.execute(get_words)
+   #fo = codecs.open(outfile,"w","utf-8")
+   #for(english_word,japanese_word) in cursor:
+   #   fo.write(u"{},{}".format(english_word,japanese_word)+u"\n");
+   #fo.close()
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return
+

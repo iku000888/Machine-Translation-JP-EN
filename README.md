@@ -19,3 +19,4 @@ Comments, feedbacks and pointers are always welcome.
 ## Random streams of consciousness
 - Maybe things would work better if there is a "fragment" entities between sentences and words.
 - English grammer forces words to be separated by spaces. Japanese does not. Trim spaces from EN, or add spaces between JP words?
+- Words between different languages are many to many mapping due to synonyms. Perhaps include frequence information or some contextual key(seems complicated)

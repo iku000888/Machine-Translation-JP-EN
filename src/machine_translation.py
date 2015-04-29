@@ -1,11 +1,14 @@
 import mysql.connector
 #codecs module is necessary for writng utf-8 chars to a file.
 import codecs
+#Credential informations stored as env. vars.
+import os
 # -*- coding: utf-8 -*-
 
 def insert_word_pair(en_word,jp_word):
-   cnx = mysql.connector.connect(user='root', password='root',
-                                 host='127.0.0.1',
+   cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
+                                 password=os.environ["MYSQLPW"],
+                                 host=os.environ["MYSQLIP"],
                                  database='EN_JAP')
    cursor = cnx.cursor()
    add_word = ("INSERT INTO word_mp "
@@ -21,8 +24,9 @@ def insert_word_pair(en_word,jp_word):
 
 def export_word_pairs(outfile):
    #print outfile
-   cnx = mysql.connector.connect(user='root', password='root',
-                                 host='127.0.0.1',
+   cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
+                                 password=os.environ["MYSQLPW"],
+                                 host=os.environ["MYSQLIP"],
                                  database='EN_JAP')
    cursor = cnx.cursor()
    get_words = ("select * from word_mp;")

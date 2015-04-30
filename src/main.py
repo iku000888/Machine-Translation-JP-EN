@@ -1,3 +1,4 @@
+#command dispatcher for this project
 import sys
 import machine_translation as mt
 #print sys.argv[0]
@@ -10,7 +11,10 @@ if "learn-word"==sys.argv[1]:
 elif "learn-sentence"==sys.argv[1]:
    print "stub: learn-sentence(a,b)"
 elif "translate-word"==sys.argv[1]:
-   print "stub: translate-word"
+   #argv[2] intended to be either EN->JP or viceversa
+   #argv[3] intended to be word to be translated
+   print mt.translate_word(sys.argv[2],sys.argv[3])
+   #print "stub: translate-word"
 elif "translate-sentence"==sys.argv[1]:
    print "stub: translate-sentence"
 elif "import-words"==sys.argv[1]:

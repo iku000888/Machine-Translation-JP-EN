@@ -68,3 +68,27 @@ def import_word_pairs(infile):
    cnx.close()
    return
 
+def translate_word(direction,word):
+   #map of translation directory to query used.
+   print "translating word..."
+   dir_sql_map = {"EN2JP":"select japanese_word " 
+                          "from word_mp " 
+                          "where english_word=\'nose\';",
+                  "JP2EN":"JP to EN query..." }
+   #print dir_sql_map
+   
+   cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
+                                 password=os.environ["MYSQLPW"],
+                                 host=os.environ["MYSQLIP"],
+                                 database='EN_JAP',
+                                 charset="utf8",
+                                 use_unicode=True)
+   cursor = cnx.cursor()
+   print dir_sql_map[direction]
+   map_word = (dir_sql_map[direction])
+   data_word = (word)
+   cursor.execute(map_word,data_word)
+   translated_word = str(cursor.fetchone()).decode("utf8")
+   cursor.close()
+   cnx.close()  
+   return translated_word;

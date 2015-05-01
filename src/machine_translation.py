@@ -70,7 +70,7 @@ def import_word_pairs(infile):
 
 def translate_word(direction,word):
    #map of translation directory to query used.
-   print "translating word..."
+   #print "translating word..."
    dir_sql_map = {"EN2JP":"select japanese_word " 
                           "from word_mp " 
                           "where english_word=\'nose\';",
@@ -84,11 +84,11 @@ def translate_word(direction,word):
                                  charset="utf8",
                                  use_unicode=True)
    cursor = cnx.cursor()
-   print dir_sql_map[direction]
+   #print dir_sql_map[direction]
    map_word = (dir_sql_map[direction])
    data_word = (word)
    cursor.execute(map_word,data_word)
-   translated_word = str(cursor.fetchone()).decode("utf8")
+   translated_word = cursor.fetchone()[0]
    cursor.close()
    cnx.close()  
    return translated_word;

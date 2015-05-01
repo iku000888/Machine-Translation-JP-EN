@@ -73,8 +73,10 @@ def translate_word(direction,word):
    #print "translating word..."
    dir_sql_map = {"EN2JP":"select japanese_word " 
                           "from word_mp " 
-                          "where english_word=\'nose\';",
-                  "JP2EN":"JP to EN query..." }
+                          "where english_word=%s;",
+                  "JP2EN":"select english_word " 
+                          "from word_mp " 
+                          "where japanese_word=%s;" }
    #print dir_sql_map
    
    cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
@@ -85,10 +87,11 @@ def translate_word(direction,word):
                                  use_unicode=True)
    cursor = cnx.cursor()
    #print dir_sql_map[direction]
-   map_word = (dir_sql_map[direction])
-   data_word = (word)
-   cursor.execute(map_word,data_word)
+   mapped_query = (dir_sql_map[direction])
+   data_word = (word,)
+   #print word
+   cursor.execute(mapped_query,data_word)
    translated_word = cursor.fetchone()[0]
    cursor.close()
    cnx.close()  
-   return translated_word;
+   return translated_word

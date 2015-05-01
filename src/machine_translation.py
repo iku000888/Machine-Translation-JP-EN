@@ -48,7 +48,7 @@ def import_word_pairs(infile):
    cursor = cnx.cursor()
    pairs = open(infile,"r")
    for line in pairs.readlines():
-      pair = line.split(",").rstrip("\n")
+      pair = line.rstrip("\n").split(",")
       en_word = pair[0]
       jp_word = pair[1]
       add_word = ("INSERT INTO word_mp "

@@ -41,6 +41,9 @@ def export_word_pairs(outfile):
 
 def import_word_pairs(infile):
    #print outfile
+   #does not call insert_word_pair because
+   #intention is to import large volume, and
+   #connecting every single time is a waste of time.
    cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
                                  password=os.environ["MYSQLPW"],
                                  host=os.environ["MYSQLIP"],
@@ -57,12 +60,6 @@ def import_word_pairs(infile):
       data_word = (en_word,jp_word)   
       cursor.execute(add_word,data_word)
    pairs.close()
-   #get_words = ("select * from word_mp;")
-   #cursor.execute(get_words)
-   #fo = codecs.open(outfile,"w","utf-8")
-   #for(english_word,japanese_word) in cursor:
-   #   fo.write(u"{},{}".format(english_word,japanese_word)+u"\n");
-   #fo.close()
    cnx.commit()
    cursor.close()
    cnx.close()

@@ -63,7 +63,7 @@ def import_word_pairs(infile):
    return
 
 def translate_word(direction,word):
-   #map of translation directory to query used.
+   #map of translation directon to query used.
    #print "translating word..."
    dir_sql_map = {"EN2JP":"select japanese_word " 
                           "from word_mp " 

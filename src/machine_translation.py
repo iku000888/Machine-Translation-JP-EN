@@ -112,3 +112,28 @@ def export_sentence_pairs(outfile):
    cursor.close()
    cnx.close()
    return
+
+def import_sentence_pairs(infile):
+   #print outfile
+   #does not call insert_word_pair because
+   #intention is to import large volume, and
+   #connecting every single time is a waste of time.
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   pairs = open(infile,"r")
+   for line in pairs.readlines():
+      pair = line.rstrip("\n").split("><")
+      en_sntc = pair[0]
+      jp_sntc = pair[1]
+      add_sntc = ("INSERT INTO sentence_mp "
+                  "(english_sntc, japanese_sntc) "
+                  "VALUES (%s, %s)")
+      data_sntc = (en_sntc,jp_sntc)   
+      cursor.execute(add_sntc,data_sntc)
+   pairs.close()
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return
+
+

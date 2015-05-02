@@ -1,8 +1,16 @@
 DROP DATABASE IF EXISTS EN_JAP;
 CREATE  DATABASE EN_JAP;
 use EN_JAP
+
 create table word_mp(
    english_word VARCHAR(20) CHARACTER SET utf8,
    japanese_word VARCHAR(20) CHARACTER SET utf8,
    primary key(english_word,japanese_word)
-)
+);
+
+create table sentence_mp(
+   english_sntc VARCHAR(80) CHARACTER SET utf8,
+   japanese_sntc VARCHAR(80) CHARACTER SET utf8,
+   primary key(english_sntc,japanese_sntc)
+);
+

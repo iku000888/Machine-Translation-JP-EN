@@ -5,18 +5,21 @@ import codecs
 import os
 # -*- coding: utf-8 -*-
 
-def insert_word_pair(en_word,jp_word):
+def get_cnx():
    cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
                                  password=os.environ["MYSQLPW"],
                                  host=os.environ["MYSQLIP"],
                                  database='EN_JAP')
+   return cnx
+
+def insert_word_pair(en_word,jp_word):
+   cnx = get_cnx()
    cursor = cnx.cursor()
    add_word = ("INSERT INTO word_mp "
                   "(english_word, japanese_word) "
                   "VALUES (%s, %s)")
    data_word = (en_word,jp_word)   
    cursor.execute(add_word,data_word)
-
    cnx.commit()
    cursor.close()
    cnx.close()
@@ -24,10 +27,7 @@ def insert_word_pair(en_word,jp_word):
 
 def export_word_pairs(outfile):
    #print outfile
-   cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
-                                 password=os.environ["MYSQLPW"],
-                                 host=os.environ["MYSQLIP"],
-                                 database='EN_JAP')
+   cnx = get_cnx()
    cursor = cnx.cursor()
    get_words = ("select * from word_mp;")
    cursor.execute(get_words)
@@ -44,10 +44,7 @@ def import_word_pairs(infile):
    #does not call insert_word_pair because
    #intention is to import large volume, and
    #connecting every single time is a waste of time.
-   cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
-                                 password=os.environ["MYSQLPW"],
-                                 host=os.environ["MYSQLIP"],
-                                 database='EN_JAP')
+   cnx = get_cnx()
    cursor = cnx.cursor()
    pairs = open(infile,"r")
    for line in pairs.readlines():
@@ -76,12 +73,7 @@ def translate_word(direction,word):
                           "where japanese_word=%s;" }
    #print dir_sql_map
    
-   cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
-                                 password=os.environ["MYSQLPW"],
-                                 host=os.environ["MYSQLIP"],
-                                 database='EN_JAP',
-                                 charset="utf8",
-                                 use_unicode=True)
+   cnx = get_cnx()
    cursor = cnx.cursor()
    #print dir_sql_map[direction]
    mapped_query = (dir_sql_map[direction])
@@ -94,10 +86,7 @@ def translate_word(direction,word):
    return translated_word
 
 def insert_sentence_pair(en_sntc,jp_sntc):
-   cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
-                                 password=os.environ["MYSQLPW"],
-                                 host=os.environ["MYSQLIP"],
-                                 database='EN_JAP')
+   cnx = get_cnx()
    cursor = cnx.cursor()
    add_sntc = ("INSERT INTO sentence_mp "
                   "(english_sntc, japanese_sntc) "

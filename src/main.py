@@ -9,7 +9,8 @@ if "learn-word"==sys.argv[1]:
    mt.insert_word_pair(sys.argv[2],sys.argv[3])
    #print 
 elif "learn-sentence"==sys.argv[1]:
-   print "stub: learn-sentence(a,b)"
+   mt.insert_sentence_pair(sys.argv[2],sys.argv[3])
+   #print "stub: learn-sentence(a,b)"
 elif "translate-word"==sys.argv[1]:
    #argv[2] intended to be either EN->JP or viceversa
    #argv[3] intended to be word to be translated

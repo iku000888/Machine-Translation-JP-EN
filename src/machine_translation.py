@@ -92,3 +92,22 @@ def translate_word(direction,word):
    cursor.close()
    cnx.close()  
    return translated_word
+
+def insert_sentence_pair(en_sntc,jp_sntc):
+   cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
+                                 password=os.environ["MYSQLPW"],
+                                 host=os.environ["MYSQLIP"],
+                                 database='EN_JAP')
+   cursor = cnx.cursor()
+   add_sntc = ("INSERT INTO sentence_mp "
+                  "(english_sntc, japanese_sntc) "
+                  "VALUES (%s, %s)")
+   data_sntc = (en_sntc,jp_sntc)   
+   cursor.execute(add_sntc,data_sntc)
+
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return
+
+

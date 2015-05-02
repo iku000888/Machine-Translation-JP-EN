@@ -27,6 +27,7 @@ elif "export-words"==sys.argv[1]:
    mt.export_word_pairs(sys.argv[2])
    #print "stub: export-words(a,b)"
 elif "export-sentences"==sys.argv[1]:
-   print "stub: export-sentences(a,b)"
+   mt.export_sentence_pairs(sys.argv[2])
+   #print "stub: export-sentences(a,b)"
 else : 
    print "error: no such command"

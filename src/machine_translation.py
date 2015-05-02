@@ -99,4 +99,16 @@ def insert_sentence_pair(en_sntc,jp_sntc):
    cnx.close()
    return
 
-
+def export_sentence_pairs(outfile):
+   #print outfile
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   get_sentences = ("select * from sentence_mp;")
+   cursor.execute(get_sentences)
+   fo = codecs.open(outfile,"w","utf-8")
+   for(english_sntc,japanese_sntc) in cursor:
+      fo.write(u"{}><{}".format(english_sntc,japanese_sntc)+u"\n");
+   fo.close()
+   cursor.close()
+   cnx.close()
+   return

@@ -3,9 +3,9 @@ CREATE  DATABASE EN_JAP;
 use EN_JAP
 
 create table word_mp(
+   word_id INT(10) PRIMARY KEY AUTO_INCREMENT,
    english_word VARCHAR(20) CHARACTER SET utf8,
-   japanese_word VARCHAR(20) CHARACTER SET utf8,
-   primary key(english_word,japanese_word)
+   japanese_word VARCHAR(20) CHARACTER SET utf8
 );
 
 create table sentence_mp(

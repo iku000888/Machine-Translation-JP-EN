@@ -121,13 +121,13 @@ def import_sentence_pairs(infile):
    cnx = get_cnx()
    cursor = cnx.cursor()
    pairs = open(infile,"r")
+   add_sntc = ("INSERT INTO sentence_mp "
+               "(english_sntc, japanese_sntc) "
+               "VALUES (%s, %s)")
    for line in pairs.readlines():
       pair = line.rstrip("\n").split("><")
       en_sntc = pair[0]
       jp_sntc = pair[1]
-      add_sntc = ("INSERT INTO sentence_mp "
-                  "(english_sntc, japanese_sntc) "
-                  "VALUES (%s, %s)")
       data_sntc = (en_sntc,jp_sntc)   
       cursor.execute(add_sntc,data_sntc)
    pairs.close()

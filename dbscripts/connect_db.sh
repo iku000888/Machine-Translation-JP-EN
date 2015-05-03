@@ -1,1 +1,1 @@
-mysql --user=root --password < $1
+mysql --user=root --password=${MYSQLPW} < $1

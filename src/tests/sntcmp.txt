@@ -1,3 +1,7 @@
 Give me chocolate><私にチョコレートを与えてください。
 I am a boy><私は男の子です
 I have nothing><私には何もありません
+flowers are beautiful><花は美しいです
+Do you have a koala><あなたはコアラを持っていますか
+I study politics as a student><私は学生として政治を勉強します
+Place a flower into your nose.><あなたの鼻の中に花を置きます

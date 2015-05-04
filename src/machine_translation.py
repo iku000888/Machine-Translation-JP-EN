@@ -136,4 +136,49 @@ def import_sentence_pairs(infile):
    cnx.close()
    return
 
+def print_all_words():
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   add_sntc = ("select * from word_mp;")
+   cursor.execute(add_sntc)
+   for (wid,en_wd,jp_wd) in cursor:
+      print wid, en_wd, jp_wd 
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return
+"""
+Method that fetches every word pair in DB, and maps
+every word to the sentence that contains the respective word.
+"""
+def build_word_sntc_mp():
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query_words = ("select * from word_mp;")
+   cursor.execute(query_words)
+   for (wid,en_wd,jp_wd) in cursor:
+      print wid, en_wd, jp_wd 
+      sntc_having_word(en_wd)
+      sntc_having_word(jp_wd)
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return
 
+def sntc_having_word(word):
+   sntc_ids = list() 
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query_sentences = ("select * from sentence_mp where " 
+                      "english_sntc like \'%" + word + "%\'" +  
+                      " or japanese_sntc like \'%" + word + "%\';")
+   #search_param = (word,word)
+   cursor.execute(query_sentences)
+   for (sid,en_sntc,jp_sntc) in cursor:
+      sntc_ids.append(sid)
+      print "   ",sid, en_sntc, jp_sntc 
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   print "method invoked with ", word
+   return sntc_ids 

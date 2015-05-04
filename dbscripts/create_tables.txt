@@ -10,8 +10,9 @@ create table word_mp(
 );
 
 create table sentence_mp(
+   sntc_id INT(30) PRIMARY KEY AUTO_INCREMENT,
    english_sntc VARCHAR(80) CHARACTER SET utf8,
    japanese_sntc VARCHAR(80) CHARACTER SET utf8,
-   primary key(english_sntc,japanese_sntc)
+   UNIQUE(english_sntc,japanese_sntc)
 );
 

@@ -157,9 +157,10 @@ def build_word_sntc_mp():
    query_words = ("select * from word_mp;")
    cursor.execute(query_words)
    for (wid,en_wd,jp_wd) in cursor:
-      print wid, en_wd, jp_wd 
-      print sntc_having_word(en_wd)
-      print sntc_having_word(jp_wd)
+      #print wid, en_wd, jp_wd 
+      en_list = sntc_having_word(en_wd)
+      jp_list = sntc_having_word(jp_wd)
+      print (en_list | jp_list)
    cnx.commit()
    cursor.close()
    cnx.close()

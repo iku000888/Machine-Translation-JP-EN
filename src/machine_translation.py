@@ -176,10 +176,25 @@ def sntc_having_word(word):
    #search_param = (word,word)
    cursor.execute(query_sentences)
    for (sid,en_sntc,jp_sntc) in cursor:
-      sntc_ids.append(sid)
+      sntc_ids.add(sid)
       print "   ",sid, en_sntc, jp_sntc 
    cnx.commit()
    cursor.close()
    cnx.close()
    print "method invoked with ", word
    return sntc_ids 
+
+def inst_sntc_wd_pair(wid,sid):
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   add_mpg = ("INSERT INTO sentence_word_mp "
+               "(sntc_id, word_id) "
+               "VALUES (%s, %s)")
+   data_mpg = (wid,sid)   
+   cursor.execute(add_mpg,data_mpg)
+   pairs.close()
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+
+   return 

@@ -1,3 +1,4 @@
 use EN_JAP
 select * from word_mp;
 select * from sentence_mp;
+select * from sentence_word_mp;

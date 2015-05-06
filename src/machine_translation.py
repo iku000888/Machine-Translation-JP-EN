@@ -160,7 +160,8 @@ def build_word_sntc_mp():
       #print wid, en_wd, jp_wd 
       en_list = sntc_having_word(en_wd)
       jp_list = sntc_having_word(jp_wd)
-      print (en_list | jp_list)
+      for sid in (en_list | jp_list):
+         inst_sntc_wd_pair(wid,sid)
    cnx.commit()
    cursor.close()
    cnx.close()

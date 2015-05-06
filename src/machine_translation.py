@@ -158,8 +158,8 @@ def build_word_sntc_mp():
    cursor.execute(query_words)
    for (wid,en_wd,jp_wd) in cursor:
       print wid, en_wd, jp_wd 
-      sntc_having_word(en_wd)
-      sntc_having_word(jp_wd)
+      print sntc_having_word(en_wd)
+      print sntc_having_word(jp_wd)
    cnx.commit()
    cursor.close()
    cnx.close()

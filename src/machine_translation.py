@@ -167,7 +167,7 @@ def build_word_sntc_mp():
    return
 
 def sntc_having_word(word):
-   sntc_ids = list() 
+   sntc_ids = set()
    cnx = get_cnx()
    cursor = cnx.cursor()
    query_sentences = ("select * from sentence_mp where " 

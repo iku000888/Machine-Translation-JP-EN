@@ -193,7 +193,6 @@ def inst_sntc_wd_pair(wid,sid):
                "VALUES (%s, %s)")
    data_mpg = (wid,sid)   
    cursor.execute(add_mpg,data_mpg)
-   pairs.close()
    cnx.commit()
    cursor.close()
    cnx.close()

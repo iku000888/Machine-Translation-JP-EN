@@ -49,6 +49,9 @@ def import_word_pairs(infile):
    pairs = open(infile,"r")
    for line in pairs.readlines():
       pair = line.rstrip("\n").split(",")
+      if len(pair)!=2:
+         print pair, "something wrong"
+         continue
       en_word = pair[0]
       jp_word = pair[1]
       add_word = ("INSERT INTO word_mp "

@@ -16,6 +16,9 @@ Comments, feedbacks and pointers are always welcome.
 - Translate sentence
 - Train translate -> Attempt translation, receive human feedback, and learn something from it.
 
+## External Dependencies
+- Accessible MySql instance that can create tables
+- Python-MySql.connector: https://packages.debian.org/sid/all/python-mysql.connector/download
 ## Usage
 On the terminal:
 - python main.py learn-word <English Word> <Japanese Word>

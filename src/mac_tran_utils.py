@@ -19,4 +19,4 @@ def balanced_split(str_to_split):
    print str_to_split
    return
 
-random_split("yolo, this is a very long string. I am on a train")
+# random_split("yolo, this is a very long string. I am on a train")

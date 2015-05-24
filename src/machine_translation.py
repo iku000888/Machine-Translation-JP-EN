@@ -4,6 +4,7 @@ import codecs
 #Credential informations stored as env. vars.
 import os
 # -*- coding: utf-8 -*-
+import mac_tran_utils as util
 
 def get_cnx():
    cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
@@ -161,6 +162,7 @@ def build_word_sntc_mp():
    cursor.execute(query_words)
    for (wid,en_wd,jp_wd) in cursor:
       #print wid, en_wd, jp_wd 
+      print "sentence having[",en_wd,"=",jp_wd,"]"
       en_list = sntc_having_word(en_wd)
       jp_list = sntc_having_word(jp_wd)
       for sid in (en_list | jp_list):
@@ -185,7 +187,6 @@ def sntc_having_word(word):
    cnx.commit()
    cursor.close()
    cnx.close()
-   print "method invoked with ", word
    return sntc_ids 
 
 def inst_sntc_wd_pair(wid,sid):

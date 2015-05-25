@@ -1,7 +1,7 @@
 # Machine-Translation-JP-EN
 Attempt implementing the concept of "tranlsation by analogy".
 Comments, feedbacks and pointers are always welcome.
-
+This is a WIP.
 ## Design Goals:
 - No awareness of grammer
 - Symmetry 

@@ -12,8 +12,8 @@ def random_split(str_to_split):
       str_to_split=str_to_split[len_chunk:len(str_to_split)]
       #print str_to_split
       #print "end of loop"
-   print splitted_list
-   return
+   #print splitted_list
+   return splitted_list
 
 def balanced_split(str_to_split):
    print str_to_split

@@ -15,6 +15,14 @@ def random_split(str_to_split):
    #print splitted_list
    return splitted_list
 
+def random_reverse_split(str_to_split):
+   #print str_to_split#[0:0:-1]
+   rand_reversed_str=random_split(str_to_split[::-1])
+   fix_chunks = list()
+   for chunk in rand_reversed_str:
+      fix_chunks.append(chunk[::-1])
+   return fix_chunks
+    
 def balanced_split(str_to_split):
    print str_to_split
    return

@@ -3,7 +3,7 @@ def random_split(str_to_split):
    splitted_list = list()
    while len(str_to_split)>=1:
       #print "loop start"
-      len_chunk=1+int(round(random.random()*len(str_to_split)))
+      len_chunk=1+int(.35*round(random.random()*len(str_to_split)))
       #print "lenchunk=",len_chunk
       chunk=str_to_split[0:len_chunk]
       #print "chunk=",chunk

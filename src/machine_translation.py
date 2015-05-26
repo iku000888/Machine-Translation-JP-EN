@@ -8,9 +8,9 @@ import mac_tran_utils as util
 
 def get_cnx():
    cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
-                                 password=os.environ["MYSQLPW"],
-                                 host=os.environ["MYSQLIP"],
-                                 database='EN_JAP')
+                             password=os.environ["MYSQLPW"],
+                             host=os.environ["MYSQLIP"],
+                             database='EN_JAP')
    return cnx
 
 def insert_word_pair(en_word,jp_word):
@@ -75,8 +75,7 @@ def translate_word(direction,word):
                   "JP2EN":"select english_word " 
                           "from word_mp " 
                           "where japanese_word=%s;" }
-   #print dir_sql_map
-   
+   #print dir_sql_map 
    cnx = get_cnx()
    cursor = cnx.cursor()
    #print dir_sql_map[direction]
@@ -97,7 +96,6 @@ def insert_sentence_pair(en_sntc,jp_sntc):
                   "VALUES (%s, %s)")
    data_sntc = (en_sntc,jp_sntc)   
    cursor.execute(add_sntc,data_sntc)
-
    cnx.commit()
    cursor.close()
    cnx.close()
@@ -163,10 +161,14 @@ def build_word_sntc_mp():
    for (wid,en_wd,jp_wd) in cursor:
       #print wid, en_wd, jp_wd 
       print "sentence having[",en_wd,"=",jp_wd,"]"
+      mapping_found = False
       en_list = sntc_having_word(en_wd)
       jp_list = sntc_having_word(jp_wd)
       for sid in (en_list | jp_list):
          inst_sntc_wd_pair(wid,sid)
+         mapping_found = True
+      if not mapping_found:
+         print "    nothing found"
    cnx.commit()
    cursor.close()
    cnx.close()
@@ -177,8 +179,8 @@ def sntc_having_word(word):
    cnx = get_cnx()
    cursor = cnx.cursor()
    query_sentences = ("select * from sentence_mp where " 
-                      "english_sntc like \'%" + word + "%\'" +  
-                      " or japanese_sntc like \'%" + word + "%\';")
+                 "english_sntc like \'%" + word + "%\'" +  
+                 " or japanese_sntc like \'%" + word + "%\';")
    #search_param = (word,word)
    cursor.execute(query_sentences)
    for (sid,en_sntc,jp_sntc) in cursor:
@@ -200,5 +202,4 @@ def inst_sntc_wd_pair(wid,sid):
    cnx.commit()
    cursor.close()
    cnx.close()
-
    return 

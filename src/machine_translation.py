@@ -8,9 +8,9 @@ import mac_tran_utils as util
 
 def get_cnx():
    cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
-                                 password=os.environ["MYSQLPW"],
-                                 host=os.environ["MYSQLIP"],
-                                 database='EN_JAP')
+                             password=os.environ["MYSQLPW"],
+                             host=os.environ["MYSQLIP"],
+                             database='EN_JAP')
    return cnx
 
 def insert_word_pair(en_word,jp_word):

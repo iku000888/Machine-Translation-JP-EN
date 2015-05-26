@@ -75,8 +75,7 @@ def translate_word(direction,word):
                   "JP2EN":"select english_word " 
                           "from word_mp " 
                           "where japanese_word=%s;" }
-   #print dir_sql_map
-   
+   #print dir_sql_map 
    cnx = get_cnx()
    cursor = cnx.cursor()
    #print dir_sql_map[direction]
@@ -97,7 +96,6 @@ def insert_sentence_pair(en_sntc,jp_sntc):
                   "VALUES (%s, %s)")
    data_sntc = (en_sntc,jp_sntc)   
    cursor.execute(add_sntc,data_sntc)
-
    cnx.commit()
    cursor.close()
    cnx.close()
@@ -200,5 +198,4 @@ def inst_sntc_wd_pair(wid,sid):
    cnx.commit()
    cursor.close()
    cnx.close()
-
    return 

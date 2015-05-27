@@ -218,3 +218,20 @@ def inst_sntc_wd_pair(wid,sid):
    cursor.close()
    cnx.close()
    return 
+
+def word_having_chunk(chunk):
+   sntc_ids = set()
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query = ("select * from word_mp where " 
+                 "english_word like \'%" + chunk +"%\'" +  
+                 " or japanese_word like \'%" + chunk +"%\';")
+   #search_param = (word,word)
+   cursor.execute(query)
+   for (sid,en_word,jp_word) in cursor:
+      sntc_ids.add(sid)
+      print "   ",sid, en_word, jp_word 
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return sntc_ids

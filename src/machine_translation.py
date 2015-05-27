@@ -48,7 +48,8 @@ def export_word_pairs(outfile):
    cursor.execute(get_words)
    fo = codecs.open(outfile,"w","utf-8")
    for(word_id,english_word,japanese_word) in cursor:
-      fo.write(u"{},{}".format(english_word,japanese_word)+u"\n")
+      fo.write(u"{},{}".format(english_word,japanese_word)
+      +u"\n")
    fo.close()
    cursor.close()
    cnx.close()

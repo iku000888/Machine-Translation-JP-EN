@@ -35,7 +35,11 @@ def insert_word_pair(en_word,jp_word):
    cursor.close()
    cnx.close()
    return
-
+"""
+dump every word pairs from the database,
+as a csv file, into the file name provided in the
+input argument.
+"""
 def export_word_pairs(outfile):
    #print outfile
    cnx = get_cnx()

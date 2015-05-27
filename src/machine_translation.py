@@ -6,6 +6,12 @@ import os
 # -*- coding: utf-8 -*-
 import mac_tran_utils as util
 
+"""
+factored out connection informations.
+Password, ID, and IP addresses are
+stored as env. variables which in turn
+are set in a script.
+"""
 def get_cnx():
    cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
                              password=os.environ["MYSQLPW"],
@@ -13,6 +19,10 @@ def get_cnx():
                              database='EN_JAP')
    return cnx
 
+"""
+Insert a pair of Enlish-Japanese
+pair of a word into the table.
+"""
 def insert_word_pair(en_word,jp_word):
    cnx = get_cnx()
    cursor = cnx.cursor()

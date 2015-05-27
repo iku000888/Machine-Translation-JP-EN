@@ -6,6 +6,12 @@ import os
 # -*- coding: utf-8 -*-
 import mac_tran_utils as util
 
+"""
+factored out connection informations.
+Password, ID, and IP addresses are
+stored as env. variables which in turn
+are set in a script.
+"""
 def get_cnx():
    cnx = mysql.connector.connect(user=os.environ["MYSQLID"],
                              password=os.environ["MYSQLPW"],
@@ -13,6 +19,10 @@ def get_cnx():
                              database='EN_JAP')
    return cnx
 
+"""
+Insert a pair of Enlish-Japanese
+pair of a word into the table.
+"""
 def insert_word_pair(en_word,jp_word):
    cnx = get_cnx()
    cursor = cnx.cursor()
@@ -25,7 +35,11 @@ def insert_word_pair(en_word,jp_word):
    cursor.close()
    cnx.close()
    return
-
+"""
+dump every word pairs from the database,
+as a csv file, into the file name provided in the
+input argument.
+"""
 def export_word_pairs(outfile):
    #print outfile
    cnx = get_cnx()
@@ -33,8 +47,9 @@ def export_word_pairs(outfile):
    get_words = ("select * from word_mp;")
    cursor.execute(get_words)
    fo = codecs.open(outfile,"w","utf-8")
-   for(english_word,japanese_word) in cursor:
-      fo.write(u"{},{}".format(english_word,japanese_word)+u"\n");
+   for(word_id,english_word,japanese_word) in cursor:
+      fo.write(u"{},{}".format(english_word,japanese_word)
+      +u"\n")
    fo.close()
    cursor.close()
    cnx.close()
@@ -108,7 +123,7 @@ def export_sentence_pairs(outfile):
    get_sentences = ("select * from sentence_mp;")
    cursor.execute(get_sentences)
    fo = codecs.open(outfile,"w","utf-8")
-   for(english_sntc,japanese_sntc) in cursor:
+   for(sntc_id,english_sntc,japanese_sntc) in cursor:
       fo.write(u"{}><{}".format(english_sntc,japanese_sntc)+u"\n");
    fo.close()
    cursor.close()
@@ -203,3 +218,20 @@ def inst_sntc_wd_pair(wid,sid):
    cursor.close()
    cnx.close()
    return 
+
+def word_having_chunk(chunk):
+   sntc_ids = set()
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query = ("select * from word_mp where " 
+                 "english_word like \'%" + chunk +"%\'" +  
+                 " or japanese_word like \'%" + chunk +"%\';")
+   #search_param = (word,word)
+   cursor.execute(query)
+   for (sid,en_word,jp_word) in cursor:
+      sntc_ids.add(sid)
+      print "   ",sid, en_word, jp_word 
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return sntc_ids

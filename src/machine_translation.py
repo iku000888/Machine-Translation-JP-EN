@@ -236,3 +236,16 @@ def word_having_chunk(chunk):
    cursor.close()
    cnx.close()
    return sntc_ids
+
+def get_word_pair_by_id(id):
+   return_val = ("","")
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query = ("select * from word_mp where word_id = %s; ") 
+   query_param = (id,)              
+   cursor.execute(query,query_param)
+   for (wid,en_word,jp_word) in cursor:
+      return_val = (en_word,jp_word)
+   cursor.close()
+   cnx.close()
+   return return_val

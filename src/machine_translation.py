@@ -124,7 +124,8 @@ def export_sentence_pairs(outfile):
    cursor.execute(get_sentences)
    fo = codecs.open(outfile,"w","utf-8")
    for(sntc_id,english_sntc,japanese_sntc) in cursor:
-      fo.write(u"{}><{}".format(english_sntc,japanese_sntc)+u"\n");
+      fo.write(u"{}><{}".format(english_sntc,japanese_sntc)
+                                                   +u"\n");
    fo.close()
    cursor.close()
    cnx.close()

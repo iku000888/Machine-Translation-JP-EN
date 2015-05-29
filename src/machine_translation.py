@@ -221,7 +221,7 @@ def inst_sntc_wd_pair(wid,sid):
    return 
 
 def word_having_chunk(chunk):
-   sntc_ids = set()
+   word_ids = set()
    cnx = get_cnx()
    cursor = cnx.cursor()
    query = ("select * from word_mp where " 
@@ -230,12 +230,12 @@ def word_having_chunk(chunk):
    #search_param = (word,word)
    cursor.execute(query)
    for (sid,en_word,jp_word) in cursor:
-      sntc_ids.add(sid)
+      word_ids.add(sid)
       print "   ",sid, en_word, jp_word 
    cnx.commit()
    cursor.close()
    cnx.close()
-   return sntc_ids
+   return word_ids
 
 def get_word_pair_by_id(id):
    return_val = ("","")

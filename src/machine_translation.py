@@ -124,7 +124,8 @@ def export_sentence_pairs(outfile):
    cursor.execute(get_sentences)
    fo = codecs.open(outfile,"w","utf-8")
    for(sntc_id,english_sntc,japanese_sntc) in cursor:
-      fo.write(u"{}><{}".format(english_sntc,japanese_sntc)+u"\n");
+      fo.write(u"{}><{}".format(english_sntc,japanese_sntc)
+                                                   +u"\n");
    fo.close()
    cursor.close()
    cnx.close()
@@ -220,7 +221,7 @@ def inst_sntc_wd_pair(wid,sid):
    return 
 
 def word_having_chunk(chunk):
-   sntc_ids = set()
+   word_ids = set()
    cnx = get_cnx()
    cursor = cnx.cursor()
    query = ("select * from word_mp where " 
@@ -229,9 +230,22 @@ def word_having_chunk(chunk):
    #search_param = (word,word)
    cursor.execute(query)
    for (sid,en_word,jp_word) in cursor:
-      sntc_ids.add(sid)
+      word_ids.add(sid)
       print "   ",sid, en_word, jp_word 
    cnx.commit()
    cursor.close()
    cnx.close()
-   return sntc_ids
+   return word_ids
+
+def get_word_pair_by_id(id):
+   return_val = ("","")
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query = ("select * from word_mp where word_id = %s; ") 
+   query_param = (id,)              
+   cursor.execute(query,query_param)
+   for (wid,en_word,jp_word) in cursor:
+      return_val = (en_word,jp_word)
+   cursor.close()
+   cnx.close()
+   return return_val

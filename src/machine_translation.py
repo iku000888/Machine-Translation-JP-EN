@@ -243,7 +243,7 @@ def word_having_chunk(chunk):
    cursor.execute(query)
    for (sid,en_word,jp_word) in cursor:
       word_ids.append(sid)
-      print "   ",sid, en_word, jp_word 
+      #print "   ",sid, en_word, jp_word 
    cnx.commit()
    cursor.close()
    cnx.close()
@@ -253,13 +253,12 @@ def get_word_pair_by_id(number):
    return_val = ("","")
    cnx = get_cnx()
    cursor = cnx.cursor()
-   query = ("select * from word_mp where word_id ="+str(number))
-   print query 
+   query = ("select * from word_mp where word_id ="+str(number)) 
    #query_param = (number,)              
    cursor.execute(query)
    for (wid,en_word,jp_word) in cursor:
       return_val = (en_word,jp_word)
-      print "return_val = ",return_val
+      #print "return_val = ",return_val
    cursor.close()
    cnx.close()
    return return_val

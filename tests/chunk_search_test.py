@@ -15,10 +15,6 @@ class TestSearchWordFromChunk(unittest.TestCase):
       self.assertEqual(en_input, retrieved_pair[0])
       print jp_input, retrieved_pair[1]
       self.assertEqual(jp_input,retrieved_pair[1])
-#self.assertTrue(True)
-#input_str="人"
-#print mc.word_having_chunk(input_str)
-#print "reverse=",mc.random_reverse_split(input_str)
 
 if __name__=='__main__':
    unittest.main()

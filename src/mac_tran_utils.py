@@ -1,4 +1,6 @@
 import random
+# -*- coding: utf-8 -*-
+
 def random_split(str_to_split):
    splitted_list = list()
    while len(str_to_split)>=1:

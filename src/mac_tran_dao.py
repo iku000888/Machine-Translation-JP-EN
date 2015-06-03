@@ -253,7 +253,7 @@ def get_word_pair_by_id(number):
    return_val = ("","")
    cnx = get_cnx()
    cursor = cnx.cursor()
-   query = ("select * from word_mp where word_id ="+str(number)) 
+   query=("select * from word_mp where word_id ="+str(number))
    #query_param = (number,)              
    cursor.execute(query)
    for (wid,en_word,jp_word) in cursor:

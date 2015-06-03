@@ -25,6 +25,11 @@ class TestSearchWordFromChunk(unittest.TestCase):
       self.assertEqual(en_input, retrieved_pair[0])
       self.assertEqual(jp_input,retrieved_pair[1])
 
+   """
+   Test for multiple words containing the input chunk.
+   Ensure that what gets put in, is retrieved by verifying
+   the number of elements.
+   """
    def test_chunk_srch_multiple_en(self):
       dao.delete_word_tbl()
       dao.insert_word_pair("living",u"生活する")
@@ -36,10 +41,12 @@ class TestSearchWordFromChunk(unittest.TestCase):
       dao.insert_word_pair("nicotine",u"ニコチン")
       dao.insert_word_pair("bin",u"ゴミ箱")
       result = dao.word_having_chunk("in")
-      print result
-      #retrieved_pair= dao.get_word_pair_by_id(int(result))
-      #self.assertEqual(en_input, retrieved_pair[0])
-      #self.assertEqual(jp_input,retrieved_pair[1])
+      list_stuff = list()
+      for wid in result:
+         retrieved_pair=dao.get_word_pair_by_id(int(wid))
+         list_stuff.append(retrieved_pair)
+      self.assertEqual(len(list_stuff),8)
+         #self.assertEqual(jp_input,retrieved_pair[1])
 
 if __name__=='__main__':
    unittest.main()

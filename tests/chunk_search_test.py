@@ -32,16 +32,19 @@ class TestSearchWordFromChunk(unittest.TestCase):
    """
    def test_chunk_srch_multiple_en(self):
       dao.delete_word_tbl()
-      dao.insert_word_pair("living",u"生活する")
-      dao.insert_word_pair("invited",u"招待される")
-      dao.insert_word_pair("involved",u"関わる")
-      dao.insert_word_pair("indeed",u"そのとおり")
-      dao.insert_word_pair("intention",u"想定")
-      dao.insert_word_pair("initiation",u"開始")
-      dao.insert_word_pair("nicotine",u"ニコチン")
-      dao.insert_word_pair("bin",u"ゴミ箱")
-      result = dao.word_having_chunk("in")
+      pairs = dict()
+      pairs["living"    ]=u"生活する"
+      pairs["invited"   ]=u"招待される"
+      pairs["involved"  ]=u"関わる"
+      pairs["indeed"    ]=u"そのとおり"
+      pairs["intention" ]=u"想定"
+      pairs["initiation"]=u"開始"
+      pairs["nicotine"  ]=u"ニコチン"
+      pairs["bin"       ]=u"ゴミ箱"
+      for en_word in pairs.keys():
+         dao.insert_word_pair(en_word,pairs[en_word])
       list_stuff = list()
+      result = dao.word_having_chunk("in")
       for wid in result:
          retrieved_pair=dao.get_word_pair_by_id(int(wid))
          list_stuff.append(retrieved_pair)

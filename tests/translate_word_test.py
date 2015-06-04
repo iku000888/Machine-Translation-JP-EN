@@ -10,7 +10,7 @@ class TestWordTranslation(unittest.TestCase):
       en_input = "human"
       jp_input = u"人間" #need the u prefix to declare utf-8
       dao.insert_word_pair(en_input,jp_input)
-      result = dao.translate_word("EN2JP","human")
+      result = dao.translate_word("EN2JP",en_input)
       self.assertEqual(result, jp_input)
 
    def test_japanese_to_english(self):

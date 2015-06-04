@@ -13,16 +13,13 @@ class TestWordTranslation(unittest.TestCase):
       result = dao.translate_word("EN2JP","human")
       self.assertEqual(result, jp_input)
 
-#   def test_chunk_srch_jp(self):
-#      dao.delete_word_tbl()
-#      en_input = "human"
-#      jp_input = u"人間" #need the u prefix to declare utf-8
-#      dao.insert_word_pair(en_input,jp_input)
-#      result = dao.word_having_chunk("人")[0]
-#      retrieved_pair= dao.get_word_pair_by_id(int(result))
-#      self.assertEqual(en_input, retrieved_pair[0])
-#      self.assertEqual(jp_input,retrieved_pair[1])
-#
+   def test_japanese_to_english(self):
+      dao.delete_word_tbl()
+      en_input = "human"
+      jp_input = u"人間" #need the u prefix to declare utf-8
+      dao.insert_word_pair(en_input,jp_input)
+      result = dao.translate_word("JP2EN",jp_input)
+      self.assertEqual(result, en_input)
 #   """
 #   Test for multiple words containing the input chunk.
 #   Ensure that what gets put in, is retrieved by verifying

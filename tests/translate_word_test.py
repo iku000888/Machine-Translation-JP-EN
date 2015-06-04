@@ -20,6 +20,14 @@ class TestWordTranslation(unittest.TestCase):
       dao.insert_word_pair(en_input,jp_input)
       result = dao.translate_word("JP2EN",jp_input)
       self.assertEqual(result, en_input)
+   
+   def test_japanese_to_english_arg_err(self):
+      dao.delete_word_tbl()
+      en_input = "human"
+      jp_input = u"人間" #need the u prefix to declare utf-8
+      dao.insert_word_pair(en_input,jp_input)
+      with self.assertRaises(KeyError):
+         self.assertRaises(dao.translate_word("JPN",jp_input))
 #   """
 #   Test for multiple words containing the input chunk.
 #   Ensure that what gets put in, is retrieved by verifying

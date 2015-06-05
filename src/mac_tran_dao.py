@@ -219,7 +219,7 @@ def build_word_sntc_mp():
       for sid in (en_list | jp_list):
          inst_sntc_wd_pair(wid,sid)
          #mapping_found = True
-      if not mapping_found:
+      #if not mapping_found:
          #print "    nothing found"
    cnx.commit()
    cursor.close()

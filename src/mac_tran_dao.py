@@ -212,15 +212,15 @@ def build_word_sntc_mp():
    cursor.execute(query_words)
    for (wid,en_wd,jp_wd) in cursor:
       #print wid, en_wd, jp_wd 
-      print "sentence having[",en_wd,"=",jp_wd,"]"
-      mapping_found = False
+      #print "sentence having[",en_wd,"=",jp_wd,"]"
+      #mapping_found = False
       en_list = sntc_having_word(en_wd)
       jp_list = sntc_having_word(jp_wd)
       for sid in (en_list | jp_list):
          inst_sntc_wd_pair(wid,sid)
-         mapping_found = True
+         #mapping_found = True
       if not mapping_found:
-         print "    nothing found"
+         #print "    nothing found"
    cnx.commit()
    cursor.close()
    cnx.close()

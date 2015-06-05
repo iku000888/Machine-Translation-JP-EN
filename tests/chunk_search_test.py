@@ -43,13 +43,17 @@ class TestSearchWordFromChunk(unittest.TestCase):
       pairs["bin"       ]=u"ゴミ箱"
       for en_word in pairs.keys():
          dao.insert_word_pair(en_word,pairs[en_word])
-      list_stuff = list()
+      list_pairs = list()
       result = dao.word_having_chunk("in")
       for wid in result:
          retrieved_pair=dao.get_word_pair_by_id(int(wid))
-         list_stuff.append(retrieved_pair)
-      self.assertEqual(len(list_stuff),8)
-         #self.assertEqual(jp_input,retrieved_pair[1])
-
+         list_pairs.append(retrieved_pair)
+      #print list_stuff
+      #first validate that the element counts match.
+      self.assertEqual(len(list_pairs),8)
+      #then validate that the mapping between 
+      #the pairs are still in tact.
+      for en_jp_pair in list_pairs:
+         self.assertEqual (en_jp_pair[1],pairs[en_jp_pair[0]])
 if __name__=='__main__':
    unittest.main()

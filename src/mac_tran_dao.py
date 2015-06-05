@@ -237,7 +237,7 @@ def sntc_having_word(word):
    cursor.execute(query_sentences)
    for (sid,en_sntc,jp_sntc) in cursor:
       sntc_ids.add(sid)
-      print "   ",sid, en_sntc, jp_sntc 
+      #print "   ",sid, en_sntc, jp_sntc 
    cnx.commit()
    cursor.close()
    cnx.close()

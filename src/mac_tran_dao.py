@@ -32,6 +32,30 @@ def delete_word_tbl():
    cnx.close()
    return
 """
+clear the content of the table, mainly for unit test purposes.
+"""
+def delete_sntc_tbl():
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   del_words = ("DELETE FROM sentence_mp")    
+   cursor.execute(del_words)
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return
+"""
+clear the content of the table, mainly for unit test purposes.
+"""
+def delete_sntc_wd_tbl():
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   del_words = ("DELETE FROM sentence_word_mp")    
+   cursor.execute(del_words)
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return
+"""
 Insert a pair of Enlish-Japanese
 pair of a word into the table.
 """

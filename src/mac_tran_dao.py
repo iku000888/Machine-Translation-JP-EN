@@ -32,6 +32,30 @@ def delete_word_tbl():
    cnx.close()
    return
 """
+clear the content of the table, mainly for unit test purposes.
+"""
+def delete_sntc_tbl():
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   del_words = ("DELETE FROM sentence_mp")    
+   cursor.execute(del_words)
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return
+"""
+clear the content of the table, mainly for unit test purposes.
+"""
+def delete_sntc_wd_tbl():
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   del_words = ("DELETE FROM sentence_word_mp")    
+   cursor.execute(del_words)
+   cnx.commit()
+   cursor.close()
+   cnx.close()
+   return
+"""
 Insert a pair of Enlish-Japanese
 pair of a word into the table.
 """
@@ -188,15 +212,15 @@ def build_word_sntc_mp():
    cursor.execute(query_words)
    for (wid,en_wd,jp_wd) in cursor:
       #print wid, en_wd, jp_wd 
-      print "sentence having[",en_wd,"=",jp_wd,"]"
-      mapping_found = False
+      #print "sentence having[",en_wd,"=",jp_wd,"]"
+      #mapping_found = False
       en_list = sntc_having_word(en_wd)
       jp_list = sntc_having_word(jp_wd)
       for sid in (en_list | jp_list):
          inst_sntc_wd_pair(wid,sid)
-         mapping_found = True
-      if not mapping_found:
-         print "    nothing found"
+         #mapping_found = True
+      #if not mapping_found:
+         #print "    nothing found"
    cnx.commit()
    cursor.close()
    cnx.close()
@@ -213,7 +237,7 @@ def sntc_having_word(word):
    cursor.execute(query_sentences)
    for (sid,en_sntc,jp_sntc) in cursor:
       sntc_ids.add(sid)
-      print "   ",sid, en_sntc, jp_sntc 
+      #print "   ",sid, en_sntc, jp_sntc 
    cnx.commit()
    cursor.close()
    cnx.close()

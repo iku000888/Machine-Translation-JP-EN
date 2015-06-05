@@ -1,9 +1,0 @@
-26/04/2015 18:19:48
-stub: learn-word(a,b)
-stub: learn-sentence(a,b)
-stub: translate-word
-stub: translate-sentence
-stub: import-words(a,b)
-stub: export-words(a,b)
-stub: import-sentence(a,b)
-stub: export-sentences(a,b)

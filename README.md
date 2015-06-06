@@ -19,7 +19,8 @@ This is a WIP.
 ## External Dependencies
 - Accessible MySql instance that can create tables
 - Python-MySql.connector: https://packages.debian.org/sid/all/python-mysql.connector/download
-## Usage
+
+## Usage 
 On the terminal:
 - python main.py learn-word <English Word> <Japanese Word>
 - python main.py learn-sentence <English Sentence> <Japanese Sentence>

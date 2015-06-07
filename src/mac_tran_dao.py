@@ -226,6 +226,20 @@ def build_word_sntc_mp():
    cnx.close()
    return
 
+def words_belonging_to_sntc(sntc_id):
+   #check whether sntc is in the db.
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query = ("select * from sentence_word_mp \
+                        where sntc_id=%s")
+   data = (sntc_id,)
+   cursor.execute(query,data)
+   word_ids = list()
+   for sntc_id, word_id in cursor:
+      print sntc_id,word_id
+      word_ids.append(word_id)
+   return word_ids
+
 def sntc_having_word(word):
    sntc_ids = set()
    cnx = get_cnx()

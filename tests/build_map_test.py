@@ -16,7 +16,8 @@ class TestBuildSntcWordMp(unittest.TestCase):
       dao.insert_sentence_pair(u"I am a human",
                                  u"私は一人の人間だ")
       dao.build_word_sntc_mp()
-      dao.words_belonging_to_sntc(21)
+      sntc_id = dao.get_sntc_id(u"I am a human")
+      word_list=dao.words_belonging_to_sntc(sntc_id)
 #   def test_dictionary_import(self):
 #      dao.delete_word_tbl()
 #      dao.delete_sntc_tbl()

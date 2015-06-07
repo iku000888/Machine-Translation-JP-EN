@@ -226,6 +226,19 @@ def build_word_sntc_mp():
    cnx.close()
    return
 
+def get_sntc_id(sntc):
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query = ("select * from sentence_mp \
+                        where english_sntc=%s or \
+                          japanese_sntc=%s")
+   data = (sntc,sntc)
+   cursor.execute(query,data)
+   word_ids = list()
+   for sntc_id, en,jp in cursor:
+      word_ids.append(sntc_id)
+   return word_ids[0]
+
 def words_belonging_to_sntc(sntc_id):
    #check whether sntc is in the db.
    cnx = get_cnx()
@@ -236,7 +249,6 @@ def words_belonging_to_sntc(sntc_id):
    cursor.execute(query,data)
    word_ids = list()
    for sntc_id, word_id in cursor:
-      print sntc_id,word_id
       word_ids.append(word_id)
    return word_ids
 

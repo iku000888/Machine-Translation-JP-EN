@@ -247,7 +247,7 @@ def inst_sntc_wd_pair(wid,sid):
    cnx = get_cnx()
    cursor = cnx.cursor()
    add_mpg = ("INSERT INTO sentence_word_mp "
-               "(sntc_id, word_id) "
+               "(word_id,sntc_id) "
                "VALUES (%s, %s)")
    data_mpg = (wid,sid)   
    cursor.execute(add_mpg,data_mpg)

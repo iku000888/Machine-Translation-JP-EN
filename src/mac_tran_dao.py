@@ -226,6 +226,20 @@ def build_word_sntc_mp():
    cnx.close()
    return
 
+def words_belonging_to_sntc(sntc_id):
+   #check whether sntc is in the db.
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query = ("select * from sentence_word_mp \
+                        where sntc_id=%s")
+   data = (sntc_id,)
+   cursor.execute(query,data)
+   word_ids = list()
+   for sntc_id, word_id in cursor:
+      print sntc_id,word_id
+      word_ids.append(word_id)
+   return word_ids
+
 def sntc_having_word(word):
    sntc_ids = set()
    cnx = get_cnx()
@@ -247,7 +261,7 @@ def inst_sntc_wd_pair(wid,sid):
    cnx = get_cnx()
    cursor = cnx.cursor()
    add_mpg = ("INSERT INTO sentence_word_mp "
-               "(sntc_id, word_id) "
+               "(word_id,sntc_id) "
                "VALUES (%s, %s)")
    data_mpg = (wid,sid)   
    cursor.execute(add_mpg,data_mpg)

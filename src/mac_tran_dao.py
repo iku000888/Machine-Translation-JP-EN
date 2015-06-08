@@ -265,6 +265,18 @@ def words_belonging_to_sntc(sntc_id):
       word_ids.append(word_id)
    return word_ids
 
+def sentences_containing_word(word_id): 
+   cnx = get_cnx()
+   cursor = cnx.cursor()
+   query = ("select * from sentence_word_mp \
+                        where word_id=%s")
+   data = (word_id,)
+   cursor.execute(query,data)
+   sntc_ids = list()
+   for sntc_id, word_id in cursor:
+      sntc_ids.append(sntc_id)
+   return sntc_ids
+
 def sntc_having_word(word):
    sntc_ids = set()
    cnx = get_cnx()

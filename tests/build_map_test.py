@@ -27,8 +27,10 @@ class TestBuildSntcWordMp(unittest.TestCase):
       for k,v in pairs.iteritems():
          self.assertTrue(dao.get_word_id(k) in word_ids)
          self.assertTrue(dao.get_word_id(v) in word_ids)
-
       #verify that the sentence is reachable from the words.
+      for word_id in word_ids:
+         self.assertEqual(\
+         dao.sentences_containing_word(word_id)[0],sntc_id)
 
 
 #   def test_dictionary_import(self):

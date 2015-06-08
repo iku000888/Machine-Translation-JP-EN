@@ -9,14 +9,30 @@ class TestBuildSntcWordMp(unittest.TestCase):
       dao.delete_word_tbl()
       dao.delete_sntc_tbl()
       dao.delete_sntc_wd_tbl()
-      dao.insert_word_pair(u"I",u"私")
-      dao.insert_word_pair(u"am",u"は")
-      dao.insert_word_pair(u"a",u"一人の")
-      dao.insert_word_pair(u"human",u"人間だ")
+      pairs = dict()
+      pairs[u"I"    ]=u"私" 
+      pairs[u"am"   ]=u"は" 
+      pairs[u"a"    ]=u"一人の"
+      pairs[u"human"]=u"人間だ"
+      for k,v in pairs.iteritems():
+         dao.insert_word_pair(k,v)
       dao.insert_sentence_pair(u"I am a human",
                                  u"私は一人の人間だ")
+      #build the relational mapping.
       dao.build_word_sntc_mp()
-      dao.words_belonging_to_sntc(21)
+
+      #verify that the words are reachable from the sentence.
+      sntc_id = dao.get_sntc_id(u"I am a human")
+      word_ids= dao.words_belonging_to_sntc(sntc_id)
+      for k,v in pairs.iteritems():
+         self.assertTrue(dao.get_word_id(k) in word_ids)
+         self.assertTrue(dao.get_word_id(v) in word_ids)
+      #verify that the sentence is reachable from the words.
+      for word_id in word_ids:
+         self.assertEqual(\
+         dao.sentences_containing_word(word_id)[0],sntc_id)
+
+
 #   def test_dictionary_import(self):
 #      dao.delete_word_tbl()
 #      dao.delete_sntc_tbl()

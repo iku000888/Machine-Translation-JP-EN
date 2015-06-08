@@ -10,8 +10,8 @@ class TestBuildSntcWordMp(unittest.TestCase):
       dao.delete_sntc_tbl()
       dao.delete_sntc_wd_tbl()
       pairs = dict()
-      pairs[u"I"    ]=u"私"    
-      pairs[u"am"   ]=u"は"    
+      pairs[u"I"    ]=u"私" 
+      pairs[u"am"   ]=u"は" 
       pairs[u"a"    ]=u"一人の"
       pairs[u"human"]=u"人間だ"
       for k,v in pairs.iteritems():

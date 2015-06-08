@@ -25,8 +25,8 @@ class TestBuildSntcWordMp(unittest.TestCase):
       sntc_id = dao.get_sntc_id(u"I am a human")
       word_ids= dao.words_belonging_to_sntc(sntc_id)
       for k,v in pairs.iteritems():
-         self.assertTrue(True)
-      print word_ids
+         self.assertTrue(dao.get_word_id(k) in word_ids)
+         self.assertTrue(dao.get_word_id(v) in word_ids)
 
       #verify that the sentence is reachable from the words.
 

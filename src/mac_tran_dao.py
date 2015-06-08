@@ -234,10 +234,10 @@ def get_sntc_id(sntc):
                           japanese_sntc=%s")
    data = (sntc,sntc)
    cursor.execute(query,data)
-   word_ids = list()
+   sntc_ids = list()
    for sntc_id, en,jp in cursor:
-      word_ids.append(sntc_id)
-   return word_ids[0]
+      sntc_ids.append(sntc_id)
+   return sntc_ids[0]
 
 def get_word_id(word):
    cnx = get_cnx()

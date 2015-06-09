@@ -41,8 +41,10 @@ def templetize_sentence(sntc,word_dict):
    As a prototype, given a set of already known words,
    replace them with '$<i>'s.
    """
-   templetized_sntc = "this is just a stub"
+   templetized_sntc = sntc
    for word,param in word_dict.iteritems():
       print word, param 
+      templetized_sntc = templetized_sntc.replace(word,param)
+      print templetized_sntc
    return templetized_sntc
 # random_split("yolo, this is a very long string. I am on a train")

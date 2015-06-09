@@ -30,4 +30,17 @@ def balanced_split(str_to_split):
    print str_to_split
    return
 
+def templetize_sentence(sntc,word_dict):
+   """
+   Eventually, given three things:
+      1. input format = [$<1>$<2> ...],
+      2. values [$<1>="some word" $<2>="some other word"...]
+      3. specified output format [$<2> $<1> ...]
+   Return third item with values fetched from the DB.
+   
+   As a prototype, given a set of already known words,
+   replace them with '$<i>'s.
+   """
+   
+   return templetized_sntc
 # random_split("yolo, this is a very long string. I am on a train")

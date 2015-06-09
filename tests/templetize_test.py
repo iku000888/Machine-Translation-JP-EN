@@ -4,13 +4,13 @@ import sys
 sys.path.append('../src/')
 import mac_tran_utils as util
 
-class TestSearchWordFromChunk(unittest.TestCase):
+class TestTempletization(unittest.TestCase):
    """
    Test for multiple words containing the input chunk.
    Ensure that what gets put in, is retrieved by verifying
    the number of elements.
    """
-   def test_chunk_srch_multiple_en(self):
+   def test_templetization_en(self):
       sntc = "I am alive today."
       pairs = dict()
       pairs[u"I"    ]="$<1>"

@@ -17,6 +17,8 @@
 mysql --user=root --password=$MYSQLPW <../dbscripts/create_tables.txt
 echo 'dropping and re-adding the tables...'
 python random_splitter_test.py
+python templetize_test.py
+
 python chunk_search_test.py
 python translate_word_test.py
 python build_map_test.py

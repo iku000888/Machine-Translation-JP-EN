@@ -43,8 +43,6 @@ def templetize_sentence(sntc,word_dict):
    """
    templetized_sntc = sntc
    for word,param in word_dict.iteritems():
-      print word, param 
       templetized_sntc = templetized_sntc.replace(word,param)
-      print templetized_sntc
    return templetized_sntc
 # random_split("yolo, this is a very long string. I am on a train")

@@ -12,5 +12,6 @@ def attempt_word_retrieval(sntc):
    into arbitrary chunks, and hoping it would partially
    match a word.
    """
+   print sntc
    word_ids = list()
    return word_ids

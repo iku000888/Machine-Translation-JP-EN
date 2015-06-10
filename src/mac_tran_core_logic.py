@@ -1,6 +1,9 @@
 """
 Leveraging the dao and util, produce useful results.
 """
+import mac_tran_dao as dao
+import mac_tran_utils as util
+
 
 def attempt_word_retrieval(sntc):
    """

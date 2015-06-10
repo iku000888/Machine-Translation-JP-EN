@@ -12,6 +12,12 @@ def attempt_word_retrieval(sntc):
    into arbitrary chunks, and hoping it would partially
    match a word.
    """
-   print sntc
+   print "sntc = :", sntc
+   chunks_forward = util.random_split(sntc)
+   chunks_backwards = util.random_reverse_split(sntc)
+   for chunk in chunks_forward:
+      print chunk, dao.word_having_chunk(chunk) 
+   for chunk in chunks_backwards:
+      print chunk, dao.word_having_chunk(chunk) 
    word_ids = list()
    return word_ids

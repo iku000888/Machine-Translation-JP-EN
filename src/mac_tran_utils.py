@@ -4,7 +4,7 @@ import random
 def random_split(str_to_split):
    splitted_list = list()
    while len(str_to_split)>=1:
-      len_chunk=1+int(.35*round(random.random()\
+      len_chunk=1+int(.13*round(random.random()\
       *len(str_to_split)))
       chunk=str_to_split[0:len_chunk]
       splitted_list.append(chunk)

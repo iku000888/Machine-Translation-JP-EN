@@ -16,8 +16,14 @@ def attempt_word_retrieval(sntc):
    chunks_forward = util.random_split(sntc)
    chunks_backwards = util.random_reverse_split(sntc)
    for chunk in chunks_forward:
-      print chunk, dao.word_having_chunk(chunk) 
+      word_ids = dao.word_having_chunk(chunk)
+      print chunk, word_ids
+      for word_id in word_ids:
+         print dao.get_word_pair_by_id(word_id)[0]
    for chunk in chunks_backwards:
-      print chunk, dao.word_having_chunk(chunk) 
+      word_ids = dao.word_having_chunk(chunk)
+      print chunk, word_ids
+      for word_id in word_ids:
+         print dao.get_word_pair_by_id(word_id)[0]
    word_ids = list()
    return word_ids

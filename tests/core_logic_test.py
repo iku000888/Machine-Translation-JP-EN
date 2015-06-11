@@ -14,14 +14,17 @@ class TestCoreLogics(unittest.TestCase):
 
    def setup_data(self):
       pairs = dict()
-      pairs["living"    ]=u"生活する"
-      pairs["invited"   ]=u"招待される"
-      pairs["involved"  ]=u"関わる"
-      pairs["indeed"    ]=u"そのとおり"
-      pairs["intention" ]=u"想定"
-      pairs["initiation"]=u"開始"
-      pairs["nicotine"  ]=u"ニコチン"
-      pairs["bin"       ]=u"ゴミ箱"
+      pairs["I"        ]=u"私"
+      pairs["am"       ]=u"は"
+      pairs["going"    ]=u"これから"
+      pairs["to"       ]=u"を"
+      pairs["retrieve" ]=u"取得する"
+      pairs["words"    ]=u"単語"
+      pairs["that"     ]=u"が"
+      pairs["this"     ]=u"この"
+      pairs["sentence" ]=u"文"
+      pairs["containts"]=u"含む"
+      pairs["."        ]=u"。"
       for k,v in pairs.iteritems():
          dao.insert_word_pair(k,v)
 if __name__ == '__main__':

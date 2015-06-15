@@ -18,6 +18,20 @@ class TestCoreLogics(unittest.TestCase):
       #for wid in w_ids:
       #   print dao.get_word_pair_by_id(wid)
       self.assertEqual(len(w_ids),11)
+   def test_attempt_word_retrieval_jp(self):
+      """
+      Becauese Japanese sentences do not separate words by
+      white space, the probability to retrieve all words is
+      low, so only assert greater than 7.
+      """
+      dao.delete_word_tbl()
+      self.setup_data()
+      w_ids=core.attempt_word_retrieval(u"私はこれからこの\
+            文に含まれる単語を取得する。")
+      #print w_ids
+      #for wid in w_ids:
+      #   print dao.get_word_pair_by_id(wid)
+      self.assertGreater(len(w_ids),7)
    def setup_data(self):
       pairs = dict()
       pairs["I"        ]=u"私"

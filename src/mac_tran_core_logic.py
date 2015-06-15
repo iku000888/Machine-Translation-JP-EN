@@ -20,3 +20,10 @@ def attempt_word_retrieval(sntc):
    for chunk in chunks_backwards:
       word_ids |= set(dao.word_having_chunk(chunk))
    return word_ids
+
+def filter_retrieved_words(word_ids,sntc):
+   """
+   After attempting word retrieval, filter words
+   that are not included in the original sentence.
+   """
+   return word_ids

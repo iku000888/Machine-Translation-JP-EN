@@ -36,7 +36,13 @@ class TestCoreLogics(unittest.TestCase):
       dao.delete_word_tbl()
       self.setup_data()
       self.setup_noise()
+      w_ids=core.attempt_word_retrieval(u"I am going to\
+         retrieve words that this sentence contains.")
+      print w_ids
+      for wid in w_ids:
+         print dao.get_word_pair_by_id(wid)
       print "added noise to the db!"
+
    def setup_data(self):
       pairs = dict()
       pairs["I"        ]=u"私"

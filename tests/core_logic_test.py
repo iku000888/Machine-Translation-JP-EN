@@ -36,12 +36,13 @@ class TestCoreLogics(unittest.TestCase):
       dao.delete_word_tbl()
       self.setup_data()
       self.setup_noise()
-      w_ids=core.attempt_word_retrieval(u"I am going to\
-         retrieve words that this sentence contains.")
-      print w_ids
-      for wid in w_ids:
-         print dao.get_word_pair_by_id(wid)
-      print "added noise to the db!"
+      input_sntc=u"I am going to "\
+         "retrieve words that this sentence contains."
+      w_ids=core.attempt_word_retrieval(input_sntc)
+      w_ids=core.filter_retrieved_words(w_ids,input_sntc)
+      #print w_ids
+      #for wid in w_ids:
+      #   print dao.get_word_pair_by_id(wid)
 
    def setup_data(self):
       pairs = dict()
@@ -54,7 +55,7 @@ class TestCoreLogics(unittest.TestCase):
       pairs["that"     ]=u"が"
       pairs["this"     ]=u"この"
       pairs["sentence" ]=u"文"
-      pairs["containts"]=u"含む"
+      pairs["contains"]=u"含む"
       pairs["."        ]=u"。"
       for k,v in pairs.iteritems():
          dao.insert_word_pair(k,v)
@@ -77,6 +78,5 @@ class TestCoreLogics(unittest.TestCase):
       pairs["coconuts" ]=u"含有"
       for k,v in pairs.iteritems():
          dao.insert_word_pair(k,v)
-      print "adding noise!!!"
 if __name__ == '__main__':
     unittest.main()

@@ -25,5 +25,17 @@ def filter_retrieved_words(word_ids,sntc):
    """
    After attempting word retrieval, filter words
    that are not included in the original sentence.
+   
+   This is a design decision that needs justification:
+   Same result can be obtained by passing the original sntc
+   in the query to the DB. Because I do not want to write 
+   more dao code, I will proceed with this for now.
    """
+   for wid in word_ids:
+      word_pair = dao.get_word_pair_by_id(wid)
+      if word_pair[0] in sntc:
+         print word_pair[0], "*", sntc
+      else:
+         print word_pair[0], sntc
+         #print word_pair[0],word_pair[1]
    return word_ids

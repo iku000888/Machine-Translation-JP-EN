@@ -59,7 +59,7 @@ class TestCoreLogics(unittest.TestCase):
       used in the test cases, used to confuse the logic.
       """
       pairs = dict()
-      pairs["igloo"        ]=u"私たちは"
+      pairs["igloo"    ]=u"私たちは"
       pairs["am"       ]=u"はばたく"
       pairs["gang"     ]=u"からす"
       pairs["two"      ]=u"を"

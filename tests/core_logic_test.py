@@ -47,5 +47,26 @@ class TestCoreLogics(unittest.TestCase):
       pairs["."        ]=u"。"
       for k,v in pairs.iteritems():
          dao.insert_word_pair(k,v)
+   def setup_noise(self):
+      """
+      To test for scenarios with dirty data,
+      add random words that contain similar characters
+      used in the test cases, used to confuse the logic.
+      """
+      pairs = dict()
+      pairs["I"        ]=u"私たちは"
+      pairs["am"       ]=u"はばたく"
+      pairs["gang"     ]=u"からす"
+      pairs["two"      ]=u"を"
+      pairs["reveal"   ]=u"するめ"
+      pairs["birds"    ]=u"単車"
+      pairs["thanks"   ]=u"がらす"
+      pairs["thus"     ]=u"このみ"
+      pairs["senate"   ]=u"文学"
+      pairs["coconuts" ]=u"含有"
+      pairs["."        ]=u"。"
+      for k,v in pairs.iteritems():
+         dao.insert_word_pair(k,v)
+
 if __name__ == '__main__':
     unittest.main()

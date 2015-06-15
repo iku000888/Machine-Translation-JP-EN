@@ -9,7 +9,7 @@ class TestCoreLogics(unittest.TestCase):
    
    #assert that words contained in the given sntc
    #can be identified, at least for most of the time.
-   def test_attempt_word_retrieval(self):
+   def test_attempt_word_retrieval_en(self):
       dao.delete_word_tbl()
       self.setup_data()
       w_ids=core.attempt_word_retrieval(u"I am going to\

@@ -32,6 +32,11 @@ class TestCoreLogics(unittest.TestCase):
       #for wid in w_ids:
       #   print dao.get_word_pair_by_id(wid)
       self.assertGreater(len(w_ids),7)
+   def test_attempt_word_retrieval_dirty(self):
+      dao.delete_word_tbl()
+      self.setup_data()
+      self.setup_noise()
+      print "added noise to the db!"
    def setup_data(self):
       pairs = dict()
       pairs["I"        ]=u"私"
@@ -54,7 +59,7 @@ class TestCoreLogics(unittest.TestCase):
       used in the test cases, used to confuse the logic.
       """
       pairs = dict()
-      pairs["I"        ]=u"私たちは"
+      pairs["igloo"        ]=u"私たちは"
       pairs["am"       ]=u"はばたく"
       pairs["gang"     ]=u"からす"
       pairs["two"      ]=u"を"
@@ -64,9 +69,8 @@ class TestCoreLogics(unittest.TestCase):
       pairs["thus"     ]=u"このみ"
       pairs["senate"   ]=u"文学"
       pairs["coconuts" ]=u"含有"
-      pairs["."        ]=u"。"
       for k,v in pairs.iteritems():
          dao.insert_word_pair(k,v)
-
+      print "adding noise!!!"
 if __name__ == '__main__':
     unittest.main()

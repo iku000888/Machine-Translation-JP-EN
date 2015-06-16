@@ -35,15 +35,17 @@ class TestCoreLogics(unittest.TestCase):
    def test_attempt_word_retrieval_dirty(self):
       dao.delete_word_tbl()
       self.setup_data()
-      self.setup_noise()
+      dirty_dict = self.setup_noise()
       input_sntc=u"I am going to "\
          "retrieve words that this sentence contains."
       w_ids=core.attempt_word_retrieval(input_sntc)
       w_ids=core.filter_retrieved_words(w_ids,input_sntc)
-      #print w_ids
-      #for wid in w_ids:
-      #   print dao.get_word_pair_by_id(wid)
-
+      #asser that the injected 'dirty data' is not included
+      #in the results.
+      for wid in w_ids:
+         pair = dao.get_word_pair_by_id(wid)
+         self.assertFalse(pair[0] in dirty_dict.keys())
+         self.assertFalse(pair[1] in dirty_dict.values())
    def setup_data(self):
       pairs = dict()
       pairs["I"        ]=u"私"
@@ -67,9 +69,9 @@ class TestCoreLogics(unittest.TestCase):
       """
       pairs = dict()
       pairs["igloo"    ]=u"私たちは"
-      pairs["am"       ]=u"はばたく"
+      pairs["game"     ]=u"はばたく"
       pairs["gang"     ]=u"からす"
-      pairs["two"      ]=u"を"
+      pairs["two"      ]=u"わをん"
       pairs["reveal"   ]=u"するめ"
       pairs["birds"    ]=u"単車"
       pairs["thanks"   ]=u"がらす"
@@ -78,5 +80,6 @@ class TestCoreLogics(unittest.TestCase):
       pairs["coconuts" ]=u"含有"
       for k,v in pairs.iteritems():
          dao.insert_word_pair(k,v)
+      return pairs
 if __name__ == '__main__':
     unittest.main()

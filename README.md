@@ -20,17 +20,9 @@ This is a WIP.
 - Accessible MySql instance that can create tables
 - Python-MySql.connector: https://packages.debian.org/sid/all/python-mysql.connector/download
 
-## Usage 
-On the terminal:
-- python main.py learn-word <English Word> <Japanese Word>
-- python main.py learn-sentence <English Sentence> <Japanese Sentence>
-- python main.py import-words <CSV with word pairs>
-- python main.py import-sentences <Text file with sentence pairs>
-- python main.py translate-word <direction> <word>
-- python main.py export-words <csv destination>
-- python main.py export-sentences <txt file destination>
-- python main.py build-sentence-word-mp
-  
+## Planned Usage:
+Deployable data exchange via JSON/SOAP in the future.
+
 
 ## Random streams of consciousness
 - Maybe things would work better if there is a "fragment" entities between sentences and words.

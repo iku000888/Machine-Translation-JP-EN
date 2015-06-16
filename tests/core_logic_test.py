@@ -46,6 +46,20 @@ class TestCoreLogics(unittest.TestCase):
          pair = dao.get_word_pair_by_id(wid)
          self.assertFalse(pair[0] in dirty_dict.keys())
          self.assertFalse(pair[1] in dirty_dict.values())
+   def test_attempt_word_retrieval_dirty_jp(self):
+      dao.delete_word_tbl()
+      self.setup_data()
+      dirty_dict = self.setup_noise()
+      input_sntc=u"私はこれからこの\
+            文に含まれる単語を取得する。"
+      w_ids=core.attempt_word_retrieval(input_sntc)
+      w_ids=core.filter_retrieved_words(w_ids,input_sntc)
+      #asser that the injected 'dirty data' is not included
+      #in the results.
+      for wid in w_ids:
+         pair = dao.get_word_pair_by_id(wid)
+         self.assertFalse(pair[0] in dirty_dict.keys())
+         self.assertFalse(pair[1] in dirty_dict.values())
    def setup_data(self):
       pairs = dict()
       pairs["I"        ]=u"私"

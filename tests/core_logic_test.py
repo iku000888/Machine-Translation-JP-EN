@@ -50,8 +50,8 @@ class TestCoreLogics(unittest.TestCase):
       dao.delete_word_tbl()
       self.setup_data()
       dirty_dict = self.setup_noise()
-      input_sntc=u"私はこれからこの\
-            文に含まれる単語を取得する。"
+      input_sntc=u"私はこれからこの"\
+            u"文に含まれる単語を取得する。"
       w_ids=core.attempt_word_retrieval(input_sntc)
       w_ids=core.filter_retrieved_words(w_ids,input_sntc)
       #asser that the injected 'dirty data' is not included

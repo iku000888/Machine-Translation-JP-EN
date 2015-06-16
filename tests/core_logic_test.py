@@ -32,7 +32,7 @@ class TestCoreLogics(unittest.TestCase):
       #for wid in w_ids:
       #   print dao.get_word_pair_by_id(wid)
       self.assertGreater(len(w_ids),7)
-   def test_attempt_word_retrieval_dirty(self):
+   def test_attempt_word_retrieval_dirty_en(self):
       dao.delete_word_tbl()
       self.setup_data()
       dirty_dict = self.setup_noise()

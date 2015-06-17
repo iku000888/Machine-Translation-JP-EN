@@ -5,7 +5,7 @@ sys.path.append('../src/')
 import mac_tran_dao as dao
 import mac_tran_core_logic as core
 
-class TestCoreLogics(unittest.TestCase):
+class TestRetrieveWordsInSentence(unittest.TestCase):
    
    #assert that words contained in the given sntc
    #can be identified, at least for most of the time.

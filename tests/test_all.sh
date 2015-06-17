@@ -24,4 +24,4 @@ python templetize_test.py
 python chunk_search_test.py
 python translate_word_test.py
 python build_map_test.py
-python core_logic_test.py
+python retrieve_words_in_sentence_test.py

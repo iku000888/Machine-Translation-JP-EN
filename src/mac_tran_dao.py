@@ -214,8 +214,8 @@ def build_word_sntc_mp():
       #print wid, en_wd, jp_wd 
       #print "sentence having[",en_wd,"=",jp_wd,"]"
       #mapping_found = False
-      en_list = sntc_having_word(en_wd)
-      jp_list = sntc_having_word(jp_wd)
+      en_list = sntc_having_word_by_str(en_wd)
+      jp_list = sntc_having_word_by_str(jp_wd)
       for sid in (en_list | jp_list):
          inst_sntc_wd_pair(wid,sid)
          #mapping_found = True
@@ -265,7 +265,7 @@ def words_belonging_to_sntc(sntc_id):
       word_ids.append(word_id)
    return word_ids
 
-def sentences_containing_word(word_id): 
+def sentences_having_word_by_id(word_id): 
    cnx = get_cnx()
    cursor = cnx.cursor()
    query = ("select * from sentence_word_mp \
@@ -277,7 +277,7 @@ def sentences_containing_word(word_id):
       sntc_ids.append(sntc_id)
    return sntc_ids
 
-def sntc_having_word(word):
+def sntc_having_word_by_str(word):
    sntc_ids = set()
    cnx = get_cnx()
    cursor = cnx.cursor()

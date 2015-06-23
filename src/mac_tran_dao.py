@@ -77,7 +77,6 @@ as a csv file, into the file name provided in the
 input argument.
 """
 def export_word_pairs(outfile):
-   #print outfile
    cnx = get_cnx()
    cursor = cnx.cursor()
    get_words = ("select * from word_mp;")
@@ -92,7 +91,6 @@ def export_word_pairs(outfile):
    return
 
 def import_word_pairs(infile):
-   #print outfile
    #does not call insert_word_pair because
    #intention is to import large volume, and
    #connecting every single time is a waste of time.
@@ -119,20 +117,16 @@ def import_word_pairs(infile):
 
 def translate_word(direction,word):
    #map of translation directon to query used.
-   #print "translating word..."
    dir_sql_map = {"EN2JP":"select japanese_word " 
                           "from word_mp " 
                           "where english_word=%s;",
                   "JP2EN":"select english_word " 
                           "from word_mp " 
                           "where japanese_word=%s;" }
-   #print dir_sql_map 
    cnx = get_cnx()
    cursor = cnx.cursor()
-   #print dir_sql_map[direction]
    mapped_query = (dir_sql_map[direction])
    data_word = (word,)
-   #print word
    cursor.execute(mapped_query,data_word)
    translated_word = cursor.fetchone()[0]
    cursor.close()
@@ -153,7 +147,6 @@ def insert_sentence_pair(en_sntc,jp_sntc):
    return
 
 def export_sentence_pairs(outfile):
-   #print outfile
    cnx = get_cnx()
    cursor = cnx.cursor()
    get_sentences = ("select * from sentence_mp;")
@@ -168,7 +161,6 @@ def export_sentence_pairs(outfile):
    return
 
 def import_sentence_pairs(infile):
-   #print outfile
    #does not call insert_word_pair because
    #intention is to import large volume, and
    #connecting every single time is a waste of time.
@@ -211,16 +203,10 @@ def build_word_sntc_mp():
    query_words = ("select * from word_mp;")
    cursor.execute(query_words)
    for (wid,en_wd,jp_wd) in cursor:
-      #print wid, en_wd, jp_wd 
-      #print "sentence having[",en_wd,"=",jp_wd,"]"
-      #mapping_found = False
       en_list = sntc_having_word_by_str(en_wd)
       jp_list = sntc_having_word_by_str(jp_wd)
       for sid in (en_list | jp_list):
          inst_sntc_wd_pair(wid,sid)
-         #mapping_found = True
-      #if not mapping_found:
-         #print "    nothing found"
    cnx.commit()
    cursor.close()
    cnx.close()
@@ -284,11 +270,9 @@ def sntc_having_word_by_str(word):
    query_sentences = ("select * from sentence_mp where " 
                  "english_sntc like \'%" + word + "%\'" +  
                  " or japanese_sntc like \'%" + word + "%\';")
-   #search_param = (word,word)
    cursor.execute(query_sentences)
    for (sid,en_sntc,jp_sntc) in cursor:
       sntc_ids.add(sid)
-      #print "   ",sid, en_sntc, jp_sntc 
    cnx.commit()
    cursor.close()
    cnx.close()
@@ -314,11 +298,9 @@ def word_having_chunk(chunk):
    query = ("select * from word_mp where " 
                  "english_word like \'%" + chunk +"%\'" +  
                  " or japanese_word like \'%" + chunk +"%\';")
-   #search_param = (word,word)
    cursor.execute(query)
    for (sid,en_word,jp_word) in cursor:
       word_ids.append(sid)
-      #print "   ",sid, en_word, jp_word 
    cnx.commit()
    cursor.close()
    cnx.close()
@@ -329,11 +311,9 @@ def get_word_pair_by_id(number):
    cnx = get_cnx()
    cursor = cnx.cursor()
    query=("select * from word_mp where word_id ="+str(number))
-   #query_param = (number,)              
    cursor.execute(query)
    for (wid,en_word,jp_word) in cursor:
       return_val = (en_word,jp_word)
-      #print "return_val = ",return_val
    cursor.close()
    cnx.close()
    return return_val

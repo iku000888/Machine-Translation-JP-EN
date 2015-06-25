@@ -4,17 +4,10 @@ Comments, feedbacks and pointers are always welcome.
 This is a WIP.
 ## Design Goals:
 - No awareness of grammer
-- Symmetry 
+- Symmetry in the logic used; avoid leveraging on things specific to a language, such as English words are separated by spaces while Japanese is not.
 - Build a relational mapping of sentence(J)-word(J)-word(E)-sentence(E)
+- Avoid Machine Learning for the time being. First focus on the 'simple' logics.
 - Aimed accuracy level -> better than nothing
-
-## Functionalities to support
-- Teach sentence pair
-- Teach word pair
-- Import/export accumulated JP-EN mapping
-- Edit JP-EN mapping to manually filter incorrect knowledge.
-- Translate sentence
-- Train translate -> Attempt translation, receive human feedback, and learn something from it.
 
 ## External Dependencies
 - Accessible MySql instance that can create tables
@@ -22,7 +15,7 @@ This is a WIP.
 
 ## Planned Usage:
 Deployable data exchange via JSON/SOAP in the future.
-
+i.e. Receive sentence to be translated and send back translated sentence.
 
 ## Random streams of consciousness
 - Maybe things would work better if there is a "fragment" entities between sentences and words.

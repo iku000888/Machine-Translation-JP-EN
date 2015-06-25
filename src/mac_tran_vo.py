@@ -12,10 +12,22 @@ class MacTranVo():
 
       
    """
-   def __init__(self,string, lang):
-      self.string = string
-      self.lang = lang
+   def __init__(self):
 
-   def print_self(self):
-      print self.string
-      print self.lang
+   def set_sentence(self,sentence):
+      self.sentence=sentence
+
+   def get_sentence(self):
+      return self.sentence
+
+   def set_detected_template(self,template):
+      self.template = template
+
+   def get_detected_template(self):
+      return self.template
+
+   def add_candidate_string(self, string):
+      self.candidate_strings.add(string)
+g = MacTranVo("hello world","jp")
+g.set_sentence("yolo")
+print g.get_sentence()

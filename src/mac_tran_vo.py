@@ -26,8 +26,8 @@ class MacTranVo():
    def get_detected_template(self):
       return self.template
 
+   def get_candidate_strings(self):
+      return self.candidate_strings
+   
    def add_candidate_string(self, string):
       self.candidate_strings.add(string)
-g = MacTranVo("hello world","jp")
-g.set_sentence("yolo")
-print g.get_sentence()

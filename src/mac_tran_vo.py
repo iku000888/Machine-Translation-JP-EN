@@ -12,7 +12,7 @@ class MacTranVo():
 
       
    """
-   def __init__(self):
+   #def __init__(self):
 
    def set_sentence(self,sentence):
       self.sentence=sentence

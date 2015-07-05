@@ -37,3 +37,8 @@ def filter_retrieved_words(word_ids,sntc):
       if not word_pair[0] in sntc and not word_pair[1]in sntc:
          new_word_ids.remove(wid)
    return new_word_ids
+
+def populate_candidate_strs(vo):
+   "retrieve candidate words and set it to the vo based on the 
+   template & words that the vo contains."
+   return

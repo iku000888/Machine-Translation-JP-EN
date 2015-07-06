@@ -1,3 +1,5 @@
 src/connect_db.py
 *.pyc
 *.py.swp
+.coverage
+htmlcov

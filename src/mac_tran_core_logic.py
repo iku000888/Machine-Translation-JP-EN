@@ -41,4 +41,7 @@ def filter_retrieved_words(word_ids,sntc):
 def populate_candidate_strs(vo):
    "retrieve candidate words and set it to the vo based on the 
    template & words that the vo contains."
+   vo.add_candidate_string("this is a string 1") 
+   vo.add_candidate_string("this is a string 2")
+   vo.add_candidate_string("this is a string 3") 
    return

@@ -12,8 +12,8 @@ class MacTranVo():
 
       
    """
-   #def __init__(self):
-
+   def __init__(self):
+      self.candidate_strings = set()
    def set_sentence(self,sentence):
       self.sentence=sentence
 
